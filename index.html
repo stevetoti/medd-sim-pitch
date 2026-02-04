@@ -55,9 +55,17 @@
             text-align: center;
         }
         
-        .hero-logo {
-            max-width: 350px;
+        .logo-container {
+            background: white;
+            padding: 30px 50px;
+            border-radius: 20px;
             margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .hero-logo {
+            max-width: 320px;
+            display: block;
         }
         
         .hero-tagline {
@@ -399,7 +407,9 @@
             <!-- Slide 1: Hero -->
             <section>
                 <div class="hero-center">
-                    <img src="images/medd-logo-1.png" alt="MEDD SIM" class="hero-logo">
+                    <div class="logo-container">
+                        <img src="images/medd-logo-1.png" alt="MEDD SIM" class="hero-logo">
+                    </div>
                     <p class="hero-tagline">
                         Giving your team the tools to practice<br>the moments that matter,
                         <span>before they matter.</span>
@@ -628,7 +638,9 @@
             <!-- Slide 9: CTA -->
             <section>
                 <div class="cta-center">
-                    <img src="images/medd-logo-1.png" alt="MEDD SIM" style="max-width: 280px; margin-bottom: 30px;">
+                    <div class="logo-container" style="padding: 25px 40px; margin-bottom: 30px;">
+                        <img src="images/medd-logo-1.png" alt="MEDD SIM" style="max-width: 260px; display: block;">
+                    </div>
                     <h2>Ready to transform how<br>your team practices?</h2>
                     <p>Turn high-stakes conversations into rehearsed performances.</p>
                     <a href="https://sim.medd.com.au" class="cta-button">Start Free Trial</a>
