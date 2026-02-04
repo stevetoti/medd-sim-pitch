@@ -5,19 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEDD SIM — Simulation Studio</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/black.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
+            --medd-lime: #C7F464;
             --medd-green: #0D6B56;
-            --medd-green-light: #10A37F;
-            --medd-green-dark: #094D3E;
-            --medd-accent: #34D399;
-            --medd-bg: #0A0F14;
-            --medd-card: #111820;
-            --medd-text: #E5E7EB;
-            --medd-muted: #9CA3AF;
+            --medd-dark: #1a1a1a;
+            --medd-gray: #4a4a4a;
+            --medd-light: #f5f5f5;
         }
         
         .reveal {
@@ -29,384 +26,71 @@
         }
         
         .reveal .slides section {
-            background: linear-gradient(135deg, var(--medd-bg) 0%, #0F1419 100%);
-            padding: 40px 60px;
+            padding: 60px 80px;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* Lime background slides */
+        .slide-lime {
+            background: var(--medd-lime) !important;
+        }
+        
+        /* Dark background slides */
+        .slide-dark {
+            background: var(--medd-dark) !important;
         }
         
         .reveal h1, .reveal h2, .reveal h3 {
             font-weight: 700;
             text-transform: none;
             letter-spacing: -0.02em;
-            color: white;
         }
         
         .reveal h1 {
-            font-size: 3.5em;
-            line-height: 1.1;
+            font-size: 2.8em;
+            line-height: 1.2;
         }
         
         .reveal h2 {
-            font-size: 2.2em;
-            margin-bottom: 0.5em;
+            font-size: 2em;
+            margin-bottom: 0.3em;
         }
         
         .reveal h3 {
-            font-size: 1.4em;
-            color: var(--medd-green-light);
+            font-size: 1.2em;
+            font-weight: 500;
         }
         
         .reveal p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            color: var(--medd-text);
-            font-weight: 400;
-        }
-        
-        .reveal .subtitle {
-            font-size: 1.5em;
-            color: var(--medd-muted);
-            font-weight: 400;
-            margin-top: 0.5em;
-        }
-        
-        /* Logo */
-        .medd-logo {
-            font-size: 1.8em;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            color: white;
-            margin-bottom: 1em;
-        }
-        
-        .medd-logo span {
-            color: var(--medd-green-light);
-        }
-        
-        /* Gradient text */
-        .gradient-text {
-            background: linear-gradient(135deg, var(--medd-green-light) 0%, var(--medd-accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Hero styling */
-        .hero-section {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
-        }
-        
-        .tagline {
-            font-size: 1.6em;
-            color: var(--medd-green-light);
-            font-weight: 500;
-            margin-bottom: 1em;
-            opacity: 0.9;
-        }
-        
-        /* Cards grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 40px;
-        }
-        
-        .card {
-            background: var(--medd-card);
-            border-radius: 16px;
-            padding: 28px;
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.3s ease;
-        }
-        
-        .card:hover {
-            border-color: var(--medd-green);
-            transform: translateY(-4px);
-        }
-        
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--medd-green) 0%, var(--medd-green-light) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-            font-size: 1.3em;
-        }
-        
-        .card h4 {
             font-size: 1.1em;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: white;
-        }
-        
-        .card p {
-            font-size: 0.9em;
-            color: var(--medd-muted);
             line-height: 1.5;
         }
         
-        /* Problem cards */
-        .problem-card {
-            background: linear-gradient(135deg, #1F1315 0%, #1A0F11 100%);
-            border-color: rgba(239, 68, 68, 0.2);
-        }
-        
-        .problem-card .card-icon {
-            background: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
-        }
-        
-        /* Solution cards */
-        .solution-card {
-            background: linear-gradient(135deg, #0F1F1A 0%, #0A1714 100%);
-            border-color: rgba(16, 163, 127, 0.2);
-        }
-        
-        /* Stats */
-        .stats-row {
+        /* Hero slide */
+        .hero-center {
             display: flex;
-            gap: 60px;
-            margin-top: 50px;
-        }
-        
-        .stat {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
             text-align: center;
         }
         
-        .stat-number {
-            font-size: 4em;
-            font-weight: 800;
-            color: var(--medd-green-light);
-            line-height: 1;
+        .hero-logo {
+            max-width: 400px;
+            margin-bottom: 40px;
         }
         
-        .stat-label {
-            font-size: 1em;
-            color: var(--medd-muted);
-            margin-top: 8px;
-        }
-        
-        /* Features list */
-        .features-list {
-            list-style: none;
-            padding: 0;
-            margin: 30px 0;
-        }
-        
-        .features-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 20px;
-            font-size: 1.1em;
-            color: var(--medd-text);
-        }
-        
-        .features-list .icon {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: var(--medd-green);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 0.8em;
-        }
-        
-        /* Pricing */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 20px;
-            max-width: 100%;
-        }
-        
-        .pricing-card {
-            background: var(--medd-card);
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid rgba(255,255,255,0.08);
-            position: relative;
-            overflow: hidden;
-            min-width: 0;
-        }
-        
-        .pricing-card.featured {
-            border-color: var(--medd-green);
-            background: linear-gradient(135deg, #0F1F1A 0%, var(--medd-card) 100%);
-        }
-        
-        .pricing-card.featured::before {
-            content: 'POPULAR';
-            position: absolute;
-            top: 16px;
-            right: -32px;
-            background: var(--medd-green);
-            color: white;
-            font-size: 0.7em;
-            font-weight: 700;
-            padding: 4px 40px;
-            transform: rotate(45deg);
-        }
-        
-        .pricing-tier {
-            font-size: 0.9em;
-            color: var(--medd-green-light);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        
-        .pricing-price {
-            font-size: 2.2em;
-            font-weight: 800;
-            color: white;
-            margin: 6px 0;
-        }
-        
-        .pricing-price span {
-            font-size: 0.45em;
-            color: var(--medd-muted);
-            font-weight: 400;
-        }
-        
-        .pricing-desc {
-            font-size: 0.8em;
-            color: var(--medd-muted);
-            margin-bottom: 16px;
+        .hero-tagline {
+            font-size: 1.6em;
+            color: var(--medd-dark);
+            max-width: 700px;
             line-height: 1.4;
         }
         
-        .pricing-features {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .pricing-features li {
-            font-size: 0.75em;
-            color: var(--medd-text);
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .pricing-features li i {
-            color: var(--medd-green-light);
-        }
-        
-        /* Process steps */
-        .process-steps {
-            display: flex;
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .step {
-            flex: 1;
-            text-align: center;
-            position: relative;
-        }
-        
-        .step::after {
-            content: '';
-            position: absolute;
-            top: 30px;
-            right: -15px;
-            width: 30px;
-            height: 2px;
-            background: var(--medd-green);
-        }
-        
-        .step:last-child::after {
-            display: none;
-        }
-        
-        .step-number {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--medd-green) 0%, var(--medd-green-light) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
+        .hero-tagline strong {
             font-weight: 700;
-            margin: 0 auto 16px;
-        }
-        
-        .step h4 {
-            font-size: 1em;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 8px;
-        }
-        
-        .step p {
-            font-size: 0.85em;
-            color: var(--medd-muted);
-        }
-        
-        /* Security badges */
-        .security-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .security-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            background: var(--medd-card);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .security-item i {
-            font-size: 1.5em;
-            color: var(--medd-green-light);
-        }
-        
-        .security-item span {
-            font-size: 1em;
-            color: var(--medd-text);
-        }
-        
-        /* CTA */
-        .cta-section {
-            text-align: center;
-            padding: 60px;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--medd-green) 0%, var(--medd-green-light) 100%);
-            color: white;
-            padding: 20px 50px;
-            border-radius: 50px;
-            font-size: 1.2em;
-            font-weight: 600;
-            text-decoration: none;
-            margin-top: 30px;
-            transition: all 0.3s ease;
-        }
-        
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(16, 163, 127, 0.3);
         }
         
         /* Two column layout */
@@ -414,71 +98,338 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
+            height: 100%;
             align-items: center;
         }
         
-        /* Animations */
-        .reveal .slides section .fragment.fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.5s ease;
+        .two-col-60-40 {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            height: 100%;
+            align-items: center;
         }
         
-        .reveal .slides section .fragment.fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .col-text h2 {
+            color: var(--medd-dark);
+            margin-bottom: 20px;
         }
         
-        /* Quote */
-        .quote {
-            font-size: 2em;
-            font-style: italic;
-            color: var(--medd-text);
-            border-left: 4px solid var(--medd-green);
-            padding-left: 30px;
-            margin: 40px 0;
+        .col-text p {
+            color: var(--medd-gray);
+            font-size: 1em;
+        }
+        
+        .col-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        /* Problem cards */
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 30px;
+        }
+        
+        .problem-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        
+        .problem-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+        
+        .problem-card-content {
+            padding: 20px;
+        }
+        
+        .problem-card h4 {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: var(--medd-dark);
+            margin-bottom: 8px;
+        }
+        
+        .problem-card p {
+            font-size: 0.8em;
+            color: var(--medd-gray);
+            line-height: 1.4;
+        }
+        
+        /* Solution cards */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 24px;
+        }
+        
+        .solution-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        
+        .solution-card h4 {
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--medd-green);
+            margin-bottom: 10px;
+        }
+        
+        .solution-card p {
+            font-size: 0.85em;
+            color: var(--medd-gray);
+            line-height: 1.5;
         }
         
         /* Use cases grid */
         .usecases-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+        
+        .usecase-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        
+        .usecase-card h4 {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--medd-dark);
+            margin-bottom: 8px;
+        }
+        
+        .usecase-card p {
+            font-size: 0.75em;
+            color: var(--medd-gray);
+            line-height: 1.4;
+        }
+        
+        /* Process steps */
+        .process-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
             margin-top: 30px;
         }
         
-        .usecase {
-            background: var(--medd-card);
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid rgba(255,255,255,0.08);
+        .process-step {
+            background: white;
+            border-radius: 12px;
+            padding: 24px 20px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
         }
         
-        .usecase h4 {
-            color: var(--medd-green-light);
-            font-size: 1em;
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--medd-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin: 0 auto 12px;
+        }
+        
+        .process-step h4 {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--medd-dark);
             margin-bottom: 8px;
         }
         
-        .usecase p {
-            font-size: 0.9em;
-            color: var(--medd-muted);
+        .process-step p {
+            font-size: 0.75em;
+            color: var(--medd-gray);
+            line-height: 1.4;
         }
         
-        /* Progress indicator */
+        /* Security list */
+        .security-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .security-item i {
+            color: var(--medd-green);
+            font-size: 1.2em;
+        }
+        
+        .security-item span {
+            font-size: 0.85em;
+            color: var(--medd-dark);
+        }
+        
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 24px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid var(--medd-green);
+            position: relative;
+        }
+        
+        .pricing-card.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--medd-green);
+            color: white;
+            font-size: 0.65em;
+            font-weight: 700;
+            padding: 4px 16px;
+            border-radius: 20px;
+        }
+        
+        .pricing-tier {
+            font-size: 0.85em;
+            color: var(--medd-green);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .pricing-price {
+            font-size: 2.4em;
+            font-weight: 800;
+            color: var(--medd-dark);
+            margin: 8px 0;
+        }
+        
+        .pricing-price span {
+            font-size: 0.35em;
+            color: var(--medd-gray);
+            font-weight: 400;
+        }
+        
+        .pricing-desc {
+            font-size: 0.75em;
+            color: var(--medd-gray);
+            margin-bottom: 16px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            font-size: 0.7em;
+            color: var(--medd-gray);
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .pricing-features li i {
+            color: var(--medd-green);
+            font-size: 0.9em;
+        }
+        
+        /* CTA slide */
+        .cta-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+        }
+        
+        .cta-center h2 {
+            font-size: 2.2em;
+            color: var(--medd-dark);
+            margin-bottom: 16px;
+        }
+        
+        .cta-center p {
+            font-size: 1.1em;
+            color: var(--medd-gray);
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--medd-green);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .cta-contact {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: var(--medd-gray);
+        }
+        
+        /* Dark slide text */
+        .slide-dark h2, .slide-dark h3 {
+            color: white;
+        }
+        
+        .slide-dark p {
+            color: #ccc;
+        }
+        
+        /* Progress bar */
         .reveal .progress {
-            background: rgba(255,255,255,0.1);
             height: 4px;
         }
         
         .reveal .progress span {
-            background: var(--medd-green-light);
-        }
-        
-        /* Slide number */
-        .reveal .slide-number {
-            color: var(--medd-muted);
-            font-size: 14px;
+            background: var(--medd-green);
         }
     </style>
 </head>
@@ -486,151 +437,142 @@
     <div class="reveal">
         <div class="slides">
             
-            <!-- Slide 1: Hero -->
-            <section>
-                <div class="hero-section">
-                    <div class="medd-logo">MEDD <span>SIM</span></div>
-                    <h1>Giving your team the tools to practice the moments that matter,<br><span class="gradient-text">before they matter.</span></h1>
-                    <p class="subtitle">The AI-powered simulation studio you control.</p>
+            <!-- Slide 1: Hero with Logo -->
+            <section class="slide-lime">
+                <div class="hero-center">
+                    <img src="images/medd-logo-1.png" alt="MEDD SIM" class="hero-logo">
+                    <p class="hero-tagline">
+                        Giving your team the tools to practice the moments that matter,<br>
+                        <strong>before they matter.</strong>
+                    </p>
                 </div>
             </section>
             
             <!-- Slide 2: Vision -->
-            <section>
-                <h3>Our Vision</h3>
-                <h2 style="font-size: 2.8em; margin-top: 20px;">Make deliberate practice<br><span class="gradient-text">a daily norm.</span></h2>
-                <div class="stats-row fragment fade-up">
-                    <div class="stat">
-                        <div class="stat-number">73%</div>
-                        <div class="stat-label">of professionals avoid role-play</div>
+            <section class="slide-lime">
+                <div class="two-col">
+                    <div class="col-text">
+                        <h3>Our Vision</h3>
+                        <h2>Make deliberate practice a daily norm.</h2>
+                        <p>MEDD Sim is the simulation studio you control. Build any AI-powered coach, role-play, or examiner in minutes.</p>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">4x</div>
-                        <div class="stat-label">faster skill acquisition with practice</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">89%</div>
-                        <div class="stat-label">prefer private rehearsal first</div>
+                    <div class="col-image">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=500&fit=crop" alt="Professional">
                     </div>
                 </div>
             </section>
             
             <!-- Slide 3: The Problem -->
-            <section>
-                <h3>The Challenge</h3>
-                <h2>Why high-stakes conversations<br>remain <span class="gradient-text">unrehearsed</span></h2>
-                <div class="cards-grid">
-                    <div class="card problem-card fragment fade-up">
-                        <div class="card-icon"><i class="fas fa-theater-masks"></i></div>
-                        <h4>Role-Play Anxiety</h4>
-                        <p>Nobody enjoys role-plays — they become filler sessions or dreaded components of training.</p>
+            <section class="slide-dark">
+                <h2 style="color: white; margin-bottom: 10px;">The problems we face</h2>
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop" alt="Meeting">
+                        <div class="problem-card-content">
+                            <h4>Role-Play Anxiety</h4>
+                            <p>Nobody enjoys role-plays, so they become filler sessions or dreaded training.</p>
+                        </div>
                     </div>
-                    <div class="card problem-card fragment fade-up">
-                        <div class="card-icon"><i class="fas fa-clock"></i></div>
-                        <h4>Time-Starved Managers</h4>
-                        <p>When managers are stretched thin, coaching is usually the first thing that gets dropped.</p>
+                    <div class="problem-card">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=200&fit=crop" alt="Busy manager">
+                        <div class="problem-card-content">
+                            <h4>Time-Starved Managers</h4>
+                            <p>When managers are stretched thin, coaching is the first thing dropped.</p>
+                        </div>
                     </div>
-                    <div class="card problem-card fragment fade-up">
-                        <div class="card-icon"><i class="fas fa-eye-slash"></i></div>
-                        <h4>Fear of Exposure</h4>
-                        <p>Professionals love coaching results — they just don't love the feeling of being exposed.</p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Slide 4: The Solution -->
-            <section>
-                <h3>The Solution</h3>
-                <h2>A behaviour rehearsal engine</h2>
-                <p style="font-size: 1.4em; color: var(--medd-muted); margin-bottom: 30px;">Build scenarios. Practice in private. Perform in the real world.</p>
-                <div class="cards-grid">
-                    <div class="card solution-card fragment fade-up">
-                        <div class="card-icon"><i class="fas fa-sliders-h"></i></div>
-                        <h4>Total Control</h4>
-                        <p>User-generated agents: build from templates or scratch for any coaching scenario.</p>
-                    </div>
-                    <div class="card solution-card fragment fade-up">
-                        <div class="card-icon"><i class="fas fa-magic"></i></div>
-                        <h4>Content Studio</h4>
-                        <p>Generate all types of resources with a click — NotebookLM-style tools built in.</p>
-                    </div>
-                    <div class="card solution-card fragment fade-up">
-                        <div class="card-icon"><i class="fas fa-clipboard-check"></i></div>
-                        <h4>BYO Rubric</h4>
-                        <p>Standardise coaching and feedback based on your company's framework.</p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Slide 5: Platform Features -->
-            <section>
-                <h3>Platform Capabilities</h3>
-                <h2>Build any coaching experience</h2>
-                <div class="usecases-grid">
-                    <div class="usecase fragment fade-up">
-                        <h4><i class="fas fa-user-tie"></i> &nbsp;Roleplay Any Customer</h4>
-                        <p>Create agents with specific personas, objections, and buying motives. Set the temperature for real-world conversations.</p>
-                    </div>
-                    <div class="usecase fragment fade-up">
-                        <h4><i class="fas fa-comments"></i> &nbsp;Coach Any Situation</h4>
-                        <p>Develop coaches for any situation using best practice templates for sales, business, HR and more.</p>
-                    </div>
-                    <div class="usecase fragment fade-up">
-                        <h4><i class="fas fa-user-md"></i> &nbsp;Patient Case Studies</h4>
-                        <p>Add AI patient simulations to CPD presentations — take therapy development to the next level.</p>
-                    </div>
-                    <div class="usecase fragment fade-up">
-                        <h4><i class="fas fa-clipboard-list"></i> &nbsp;Examiner Mode</h4>
-                        <p>Create OSCE agents to assess clinical, technical, or knowledge-based scenarios with custom rubrics.</p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Slide 6: Learning Pathways -->
-            <section>
-                <div class="two-col">
-                    <div>
-                        <h3>Learning Pathways</h3>
-                        <h2>Structured journeys for<br><span class="gradient-text">measurable growth</span></h2>
-                        <ul class="features-list">
-                            <li class="fragment fade-up"><span class="icon"><i class="fas fa-check"></i></span> Product launch readiness</li>
-                            <li class="fragment fade-up"><span class="icon"><i class="fas fa-check"></i></span> Clinical training programs</li>
-                            <li class="fragment fade-up"><span class="icon"><i class="fas fa-check"></i></span> Business acumen development</li>
-                            <li class="fragment fade-up"><span class="icon"><i class="fas fa-check"></i></span> Performance evaluation</li>
-                            <li class="fragment fade-up"><span class="icon"><i class="fas fa-check"></i></span> Compliance training</li>
-                            <li class="fragment fade-up"><span class="icon"><i class="fas fa-check"></i></span> Gamified campaigns</li>
-                        </ul>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="background: var(--medd-card); border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.1);">
-                            <i class="fas fa-route" style="font-size: 5em; color: var(--medd-green-light); margin-bottom: 20px;"></i>
-                            <p style="font-size: 1.1em; color: var(--medd-text);">Create templates, build from scratch, or go full service</p>
+                    <div class="problem-card">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=200&fit=crop" alt="Professional">
+                        <div class="problem-card-content">
+                            <h4>Fear of Exposure</h4>
+                            <p>Professionals love coaching results — just don't love feeling exposed.</p>
                         </div>
                     </div>
                 </div>
             </section>
             
-            <!-- Slide 7: How It Works -->
-            <section>
-                <h3>How It Works</h3>
-                <h2>From signup to simulation <span class="gradient-text">in minutes</span></h2>
-                <div class="process-steps">
-                    <div class="step fragment fade-up">
+            <!-- Slide 4: How We Fix It -->
+            <section class="slide-lime">
+                <div class="two-col-60-40">
+                    <div class="col-text">
+                        <h3>How we fix it</h3>
+                        <h2>A behaviour rehearsal engine</h2>
+                        <p style="margin-bottom: 20px;">Build scenarios, practice in private, and make it happen in the real world.</p>
+                        <div class="solutions-grid" style="grid-template-columns: 1fr 1fr; margin-top: 16px;">
+                            <div class="solution-card">
+                                <h4>Total Control</h4>
+                                <p>User-generated agents from templates or scratch</p>
+                            </div>
+                            <div class="solution-card">
+                                <h4>Content Studio</h4>
+                                <p>Generate resources with a click</p>
+                            </div>
+                            <div class="solution-card">
+                                <h4>BYO Rubric</h4>
+                                <p>Standardise feedback to your framework</p>
+                            </div>
+                            <div class="solution-card">
+                                <h4>Learning Pathways</h4>
+                                <p>Structured training for any goal</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-image">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=600&fit=crop" alt="Team working">
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 5: Build Any Experience -->
+            <section class="slide-lime">
+                <h2 style="margin-bottom: 8px;">Build any coaching or roleplay experience</h2>
+                <div class="usecases-grid">
+                    <div class="usecase-card">
+                        <h4>👔 Roleplay Any Customer</h4>
+                        <p>Create agents with personas, objections, and buying motives.</p>
+                    </div>
+                    <div class="usecase-card">
+                        <h4>💬 Coach Any Situation</h4>
+                        <p>Best practice templates for sales, business, HR.</p>
+                    </div>
+                    <div class="usecase-card">
+                        <h4>📚 Workforce Readiness</h4>
+                        <p>Orientation, reviews, compliance training.</p>
+                    </div>
+                    <div class="usecase-card">
+                        <h4>🏥 Patient Case Study</h4>
+                        <p>AI patient simulations for CPD presentations.</p>
+                    </div>
+                    <div class="usecase-card">
+                        <h4>📋 Examiner Mode</h4>
+                        <p>OSCE agents for clinical assessments.</p>
+                    </div>
+                    <div class="usecase-card">
+                        <h4>🎯 User-Created Sims</h4>
+                        <p>Let teams create personalized coaching.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 6: How It Works -->
+            <section class="slide-lime">
+                <h2 style="margin-bottom: 8px;">How It Works</h2>
+                <div class="process-row">
+                    <div class="process-step">
                         <div class="step-number">1</div>
                         <h4>Register</h4>
-                        <p>Access the SIM dashboard and select your package</p>
+                        <p>Access the dashboard and select your package</p>
                     </div>
-                    <div class="step fragment fade-up">
+                    <div class="process-step">
                         <div class="step-number">2</div>
                         <h4>Onboard</h4>
                         <p>Bring your team and assign user types</p>
                     </div>
-                    <div class="step fragment fade-up">
+                    <div class="process-step">
                         <div class="step-number">3</div>
                         <h4>Create</h4>
                         <p>Build agents, pathways, and campaigns</p>
                     </div>
-                    <div class="step fragment fade-up">
+                    <div class="process-step">
                         <div class="step-number">4</div>
                         <h4>Practice</h4>
                         <p>Rehearse, get feedback, improve</p>
@@ -638,95 +580,90 @@
                 </div>
             </section>
             
-            <!-- Slide 8: Security -->
-            <section>
-                <h3>Security & Governance</h3>
-                <h2>Private by design.<br><span class="gradient-text">Secure by default.</span></h2>
+            <!-- Slide 7: Security -->
+            <section class="slide-lime">
+                <h2 style="margin-bottom: 8px;">Security and governance</h2>
+                <h3 style="color: var(--medd-gray); margin-bottom: 20px;">Private by design — secure by default</h3>
                 <div class="security-grid">
-                    <div class="security-item fragment fade-up">
+                    <div class="security-item">
                         <i class="fas fa-shield-alt"></i>
-                        <span>Data boundary protection — no model training on your data</span>
+                        <span>Data boundary — no model training</span>
                     </div>
-                    <div class="security-item fragment fade-up">
+                    <div class="security-item">
                         <i class="fas fa-server"></i>
-                        <span>Customer isolation — separate instances, no sharing</span>
+                        <span>Customer isolation — separate instance</span>
                     </div>
-                    <div class="security-item fragment fade-up">
+                    <div class="security-item">
                         <i class="fas fa-user-lock"></i>
-                        <span>Role-based access — learner, assessor, admin</span>
+                        <span>Role-based access control</span>
                     </div>
-                    <div class="security-item fragment fade-up">
-                        <i class="fas fa-history"></i>
-                        <span>Full audit logs — who did what, when</span>
+                    <div class="security-item">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Full audit logs</span>
                     </div>
-                    <div class="security-item fragment fade-up">
-                        <i class="fas fa-file-contract"></i>
-                        <span>Rubric versioning — track rules and content used</span>
+                    <div class="security-item">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Rubric versioning</span>
                     </div>
-                    <div class="security-item fragment fade-up">
+                    <div class="security-item">
                         <i class="fas fa-download"></i>
-                        <span>Exportable evidence — accessible by admin/end-user</span>
+                        <span>Exportable evidence</span>
                     </div>
                 </div>
             </section>
             
-            <!-- Slide 9: Pricing -->
-            <section>
-                <h3>Pricing</h3>
-                <h2>Simple, transparent pricing</h2>
+            <!-- Slide 8: Pricing -->
+            <section class="slide-lime">
+                <h2 style="margin-bottom: 8px;">Pricing</h2>
                 <div class="pricing-grid">
-                    <div class="pricing-card fragment fade-up">
+                    <div class="pricing-card">
                         <div class="pricing-tier">Essential</div>
-                        <div class="pricing-price">$39<span>/user/month</span></div>
-                        <div class="pricing-desc">For individuals and small teams getting started</div>
+                        <div class="pricing-price">$39<span>/user/mo</span></div>
+                        <div class="pricing-desc">For individuals and small teams</div>
                         <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> 10 mins video / 60 mins audio</li>
+                            <li><i class="fas fa-check"></i> 10 min video / 60 min audio</li>
                             <li><i class="fas fa-check"></i> Unlimited agent types</li>
                             <li><i class="fas fa-check"></i> Learning pathways</li>
-                            <li><i class="fas fa-check"></i> Templates + custom rubrics</li>
-                            <li><i class="fas fa-check"></i> Content Studio: 2 sessions/mo</li>
+                            <li><i class="fas fa-check"></i> Templates + rubrics</li>
                             <li><i class="fas fa-check"></i> Email support</li>
                         </ul>
                     </div>
-                    <div class="pricing-card featured fragment fade-up">
+                    <div class="pricing-card featured">
                         <div class="pricing-tier">Professional</div>
-                        <div class="pricing-price">$79<span>/user/month</span></div>
-                        <div class="pricing-desc">For teams with coordinated training programs</div>
+                        <div class="pricing-price">$79<span>/user/mo</span></div>
+                        <div class="pricing-desc">For teams with training programs</div>
                         <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> 25 mins video / 90 mins audio (pooled)</li>
+                            <li><i class="fas fa-check"></i> 25 min video / 90 min audio</li>
                             <li><i class="fas fa-check"></i> Everything in Essential</li>
-                            <li><i class="fas fa-check"></i> Team analytics + gamification</li>
-                            <li><i class="fas fa-check"></i> Pooled Content Studio</li>
-                            <li><i class="fas fa-check"></i> Volume discounts on overages</li>
-                            <li><i class="fas fa-check"></i> Email + message support</li>
+                            <li><i class="fas fa-check"></i> Team analytics</li>
+                            <li><i class="fas fa-check"></i> Gamification</li>
+                            <li><i class="fas fa-check"></i> Priority support</li>
                         </ul>
                     </div>
-                    <div class="pricing-card fragment fade-up">
+                    <div class="pricing-card">
                         <div class="pricing-tier">Enterprise</div>
                         <div class="pricing-price">Custom</div>
-                        <div class="pricing-desc">For organisations needing full control</div>
+                        <div class="pricing-desc">For organisations</div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> Custom instance</li>
                             <li><i class="fas fa-check"></i> High pooled allowances</li>
-                            <li><i class="fas fa-check"></i> SSO & advanced governance</li>
+                            <li><i class="fas fa-check"></i> SSO & governance</li>
                             <li><i class="fas fa-check"></i> Volume rates</li>
-                            <li><i class="fas fa-check"></i> Dedicated success manager</li>
                             <li><i class="fas fa-check"></i> Phone support</li>
                         </ul>
                     </div>
                 </div>
             </section>
             
-            <!-- Slide 10: CTA -->
-            <section>
-                <div class="cta-section">
-                    <div class="medd-logo" style="font-size: 2.5em;">MEDD <span>SIM</span></div>
-                    <h2 style="font-size: 2.5em; text-align: center;">Ready to transform how<br>your team practices?</h2>
-                    <p style="font-size: 1.3em; color: var(--medd-muted); text-align: center; margin-top: 20px;">Turn high-stakes conversations into rehearsed performances.</p>
+            <!-- Slide 9: CTA -->
+            <section class="slide-lime">
+                <div class="cta-center">
+                    <img src="images/medd-logo-1.png" alt="MEDD SIM" style="max-width: 250px; margin-bottom: 30px;">
+                    <h2>Ready to transform how your team practices?</h2>
+                    <p>Turn high-stakes conversations into rehearsed performances.</p>
                     <a href="https://sim.medd.com.au" class="cta-button">Start Free Trial</a>
-                    <p style="font-size: 0.9em; color: var(--medd-muted); text-align: center; margin-top: 20px;">
-                        <i class="fas fa-envelope"></i> &nbsp;hello@medd.com.au &nbsp;&nbsp;|&nbsp;&nbsp;
-                        <i class="fas fa-globe"></i> &nbsp;sim.medd.com.au
+                    <p class="cta-contact">
+                        📧 hello@medd.com.au &nbsp;|&nbsp; 🌐 sim.medd.com.au
                     </p>
                 </div>
             </section>
@@ -739,18 +676,13 @@
         Reveal.initialize({
             hash: true,
             slideNumber: 'c/t',
-            showSlideNumber: 'all',
             transition: 'slide',
-            transitionSpeed: 'default',
-            backgroundTransition: 'fade',
             controls: true,
             progress: true,
             center: false,
             width: 1280,
             height: 720,
-            margin: 0,
-            minScale: 0.2,
-            maxScale: 2.0
+            margin: 0.04
         });
     </script>
 </body>
